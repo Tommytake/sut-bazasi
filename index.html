@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1d3a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Sut bo'limi">
+  <title>Sut bo'limi — mahsulotlar bazasi</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
+
+  <!-- Yuklanish -->
+  <div id="loader" class="loader"><div class="spinner"></div></div>
+
+  <!-- Kirish oynasi -->
+  <section id="login" class="login hidden">
+    <form id="loginForm" class="glass login-card">
+      <div class="logo-big"><img src="icon.svg" alt=""></div>
+      <h1>Sut bo'limi</h1>
+      <p class="muted">Mahsulotlar va muddatlar bazasi</p>
+      <label>Email<input name="email" type="email" autocomplete="username" required></label>
+      <label>Parol<input name="password" type="password" autocomplete="current-password" required></label>
+      <button class="btn primary wide" type="submit">Kirish</button>
+      <p id="loginErr" class="err-text"></p>
+    </form>
+  </section>
+
+  <!-- Asosiy ilova -->
+  <div id="app" class="app hidden">
+    <header class="topbar glass">
+      <div class="brand"><img src="icon.svg" alt=""><span>Sut bo'limi</span></div>
+      <div class="top-actions">
+        <button class="icon-btn" data-act="bell" aria-label="Bildirishnomalar"><span id="bellIcon"></span><span id="bellBadge" class="badge-dot hidden">0</span></button>
+        <button class="icon-btn" data-act="settings" aria-label="Sozlamalar"><span id="gearIcon"></span></button>
+      </div>
+    </header>
+    <div id="demoBanner" class="demo-banner hidden">Demo rejim: ma'lumotlar faqat shu qurilmada saqlanadi. Sinxronlash uchun <b>config.js</b> ni to'ldiring.</div>
+    <main id="view"></main>
+    <nav id="nav" class="nav glass"></nav>
+  </div>
+
+  <div id="modalRoot"></div>
+  <div id="confirmRoot"></div>
+  <div id="toast" class="toast"></div>
+
+  <script src="lib/supabase.js"></script>
+  <script src="lib/html5-qrcode.min.js"></script>
+  <script src="lib/xlsx.full.min.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
