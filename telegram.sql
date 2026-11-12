@@ -64,7 +64,8 @@ begin
   perform net.http_post(
     url     := 'https://api.telegram.org/bot' || tok || '/sendMessage',
     body    := jsonb_build_object('chat_id', chat, 'text', body, 'disable_web_page_preview', true),
-    headers := '{"Content-Type": "application/json"}'::jsonb
+    headers := '{"Content-Type": "application/json"}'::jsonb,
+    timeout_milliseconds := 30000
   );
 end;
 $$;
